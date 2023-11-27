@@ -1,0 +1,23 @@
+name: Update Files JSON
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-files-json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Update Files JSON
+        run: |
+          python generate_files_json.py
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add files.json
+          git commit -m "Update files.json by GitHub Action"
+          git push
