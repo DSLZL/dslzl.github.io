@@ -1,89 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	.
-	.
-	.
-	// 在这里对marked框架进行引用
-	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-	
-	.
-	.
-	.
-	// 在这里编写AJAX代码
-	<script>
-  function showMarkdown()
-// 定义函数 showMarkdown()
-{
-	// 获取表单变量
-	var f=form;
-	// 创建XMLHttpRequest对象
-	var xmlhttp;
-	if (window.XMLHttpRequest)
-	{
-		// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-		xmlhttp=new XMLHttpRequest();
-	}
-	else
-	{
-		// IE6, IE5 浏览器执行代码
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	
-	
-	// 得到服务器响应后，对得到的Markdown文档进行解析
-	xmlhttp.onreadystatechange=function()
-	{
-		if (xmlhttp.readyState==4 && xmlhttp.status==200)
-		{
-			// 这里调用了marked框架中的marked函数实现Markdown2HTML的解析
-			document.getElementById("content").innerHTML=marked(xmlhttp.responseText);
-		}
-	}
-	
-	
-	// 向服务器发送请求，获取你需要的Markdown文档
-	xmlhttp.open("GET",f.q.value,true);
-	xmlhttp.send();
-	}
-
-	</script>
-	.
-	.
-	.
+  <title>Markdown Viewer</title>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: Arial, sans-serif; }
+    pre { white-space: pre-wrap; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var mdFile = 'markdown/sample.md'; // 这里使用样例路径，请根据实际情况修改
+      fetch(mdFile)
+        .then(function(response) {
+          return response.text();
+        })
+        .then(function(text) {
+          var markdown = marked(text);
+          document.getElementById('content').innerHTML = markdown;
+        })
+        .catch(function(error) {
+          console.log('Error:', error);
+        });
+    });
+  </script>
 </head>
 <body>
-	.
-	.
-	.
-	// 在这里编辑表单代码
-	<div class="container" style="margin-top:30px">
-	
-
-		<form name="form" action="" method="post">
-		
-
-			<select name="q">
-				<option class="active" alue="">选择一个笔记:</option>
-				<option>选择一个笔记：</option>
-				<option value="A.md">第一个Markdown文档</option>
-				<option value="B.md">第二个Markdown文档</option>
-				<option value="C.md">第三个Markdown文档</option>
-				<option value="Evalue-TranscriptomeData.md">第四个Markdown文档</option>
-			</select>
-			<input type="button" value="显示" onclick="showMarkdown()">
-			<input></input>
-		</form>
-	.
-	.
-	.
-	// 在这里编辑空的div节点，用于后面展示解析后的内容
-	<div id="content"></div>
-	
-
-	</div>
-	.
-	.
-	.
+  <div id="content"></div>
 </body>
 </html>
