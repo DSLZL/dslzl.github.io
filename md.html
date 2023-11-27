@@ -6,26 +6,115 @@
   <style>
     body { font-family: Arial, sans-serif; }
     pre { white-space: pre-wrap; }
+    .file-tree {
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+    .file-tree ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .file-tree li {
+      position: relative;
+    }
+    .file-tree li:before {
+      content: "▸";
+      position: absolute;
+      left: -10px;
+      top: 1px;
+      color: #999;
+      cursor: pointer;
+    }
+    .file-tree li.directory.open:before {
+      content: "▾";
+    }
+    .file-tree li.file {
+      padding-left: 15px;
+    }
+    #content {
+      margin-left: 20px;
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     window.addEventListener('DOMContentLoaded', function() {
-      var mdFile = 'markdown/sample.md'; // 这里使用样例路径，请根据实际情况修改
-      fetch(mdFile)
-        .then(function(response) {
-          return response.text();
-        })
-        .then(function(text) {
-          var markdown = marked(text);
-          document.getElementById('content').innerHTML = markdown;
-        })
-        .catch(function(error) {
-          console.log('Error:', error);
-        });
+      var currentPath = '';
+  
+      function getFileList(path) {
+        fetch(path)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(data) {
+            var fileList = data.files;
+            var fileTree = buildFileTree(fileList);
+            document.getElementById('file-tree').innerHTML = fileTree;
+          })
+          .catch(function(error) {
+            console.log('Error:', error);
+          });
+      }
+  
+      function buildFileTree(files) {
+        var fileListHTML = '<ul>';
+        for (var i = 0; i < files.length; i++) {
+          var fileInfo = files[i];
+          var isDirectory = fileInfo.type === 'directory';
+          var icon = isDirectory ? '▸' : '&nbsp;&nbsp;&nbsp;&nbsp;';
+          fileListHTML += '<li class="' + (isDirectory ? 'directory' : 'file') + '" data-file-path="' + fileInfo.path + '">';
+          fileListHTML += '<span class="icon">' + icon + '</span>';
+          fileListHTML += fileInfo.name;
+          fileListHTML += '</li>';
+        }
+        fileListHTML += '</ul>';
+        return fileListHTML;
+      }
+  
+      function loadFile(filePath) {
+        fetch(filePath)
+          .then(function(response) {
+            return response.text();
+          })
+          .then(function(text) {
+            var markdown = marked(text);
+            document.getElementById('content').innerHTML = markdown;
+          })
+          .catch(function(error) {
+            console.log('Error:', error);
+          });
+      }
+  
+      document.getElementById('file-tree').addEventListener('click', function(event) {
+        var target = event.target;
+        if (target.tagName === 'LI') {
+          var isDirectory = target.classList.contains('directory');
+          var filePath = target.getAttribute('data-file-path');
+          if (isDirectory) {
+            var isOpen = target.classList.contains('open');
+            if (isOpen) {
+              target.classList.remove('open');
+              target.querySelector('.icon').innerHTML = '▸';
+            } else {
+              target.classList.add('open');
+              target.querySelector('.icon').innerHTML = '▾';
+            }
+          } else {
+            var currentSelected = document.querySelector('.file.selected');
+            if (currentSelected) {
+              currentSelected.classList.remove('selected');
+            }
+            target.classList.add('selected');
+            loadFile(filePath);
+          }
+        }
+      });
+  
+      getFileList('markdown/files.json'); // 这里使用样例路径，请根据实际情况修改
     });
   </script>
 </head>
 <body>
+  <div class="file-tree" id="file-tree"></div>
   <div id="content"></div>
 </body>
 </html>
