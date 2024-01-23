@@ -1,12 +1,12 @@
 [
   {
-    "name": "test.md",
-    "type": "file",
-    "path": "test.md"
-  },
-  {
     "name": "just keep this fold.md",
     "type": "file",
     "path": "just keep this fold.md"
+  },
+  {
+    "name": "test.md",
+    "type": "file",
+    "path": "test.md"
   }
 ]
