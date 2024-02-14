@@ -3,24 +3,29 @@
         background-color: lightblue;
     }
 }
+
 @media (min-width: 601px) {
     body {
         background-color: lightgreen;
     }
 }
+
 a {
     text-decoration: none;
     color: lightblue;
 }
+
 img {
     max-width: 50%;
     height: 50%;
 }
+
 .power {
     text-decoration: none;
     padding-left: 50%;
     
 }
+
 /* 样式用于侧边栏 */
 .sidebar {
     height: 100%;
@@ -61,4 +66,13 @@ img {
 
 .openbtn:hover {
     background-color: #444;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+}
+
+.content img {
+    margin-left: 10px;
 }
