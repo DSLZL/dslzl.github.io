@@ -1,0 +1,43 @@
+/* 默认样式 */
+body {
+  background-color: white;
+  color: rgb(30, 30, 30);
+}
+
+/* 夜间模式 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: rgb(30,30,30);
+    color: white;
+  }
+}
+
+a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+img {
+    max-width: 50%;
+    height: 50%;
+}
+
+.power {
+    text-decoration: none;
+    padding-left: 50%;
+    
+}
+
+.content {
+    display: flex;
+    align-items: center;
+}
+
+.content img {
+    margin-left: 10px;
+}
+
+img {
+    max-width: 15%;
+    height: auto;
+}

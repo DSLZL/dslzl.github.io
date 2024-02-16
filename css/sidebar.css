@@ -1,31 +1,3 @@
-@media (max-width: 600px) {
-    body {
-        background-color: lightblue;
-    }
-}
-
-@media (min-width: 601px) {
-    body {
-        background-color: lightgreen;
-    }
-}
-
-a {
-    text-decoration: none;
-    color: lightblue;
-}
-
-img {
-    max-width: 50%;
-    height: 50%;
-}
-
-.power {
-    text-decoration: none;
-    padding-left: 50%;
-    
-}
-
 /* 样式用于侧边栏 */
 .sidebar {
     height: 100%;
@@ -33,7 +5,7 @@ img {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #ffffff;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -68,11 +40,16 @@ img {
     background-color: #444;
 }
 
-.content {
-    display: flex;
-    align-items: center;
-}
-
-.content img {
-    margin-left: 10px;
-}
+/* 夜间模式 */
+@media (prefers-color-scheme: dark) {
+    .sidebar {
+      background-color: #333333;
+    }
+    .sidebar a {
+      color: #c0c0c0;
+    }
+    .openbtn {
+      background-color: #333333;
+      color: white;
+    }
+  }
