@@ -24,7 +24,7 @@ img {
 
 .power {
     text-decoration: none;
-    padding-left: 50%;
+    text-align: center;
     
 }
 
@@ -40,4 +40,9 @@ img {
 img {
     max-width: 15%;
     height: auto;
+}
+
+.email {
+    text-decoration: none;
+    text-align: center;
 }

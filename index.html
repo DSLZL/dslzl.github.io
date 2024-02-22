@@ -1,34 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="fly-html-extend">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <title>网页标题</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>个人网站</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="个人网站">
+    <meta name="description" content="个人网站">
+    <link rel="stylesheet" href="./dist/font_24081_qs69ykjbea.css">
+    <link rel="stylesheet" href="./dist/layui.css">
+    <link rel="stylesheet" href="./dist/global.css" charset="utf-8">
+    <link rel="stylesheet" href="./dist/global_1.css" charset="utf-8">
+    <style type="text/css">
+        .msg {
+            background: rgba(255, 1);
+            width: 30%;
+            min-width: 300px;
+            margin: auto;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .layui-select-title input {
+            width: 100% !important
+        }
+
+    </style>
+
 </head>
 <body>
-    <button class="openbtn" onclick="openNav()">☰</button>
-    <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=ZPdDIGJC_sdWrITVabfenD8c3ESwZCGj&authKey=a2uwq21w5rTBf+QvXdl8NDwgP3NjqecRoojO6HGqLzSrd1oRY+EVamk0WHKrRnEv&noverify=0&group_code=789669279"><h1>点击加入群聊</h1></a>
-    <h2>也可点此展开，扫描二维码</h2>
-    <img src="image/qrcode-1.jpg" alt="吧服群二维码">
-    <div class="content">
-        <p>寻找优化？来用<a href="https://www.modrinth.com/modpack/only-optimized">Only-Optimized</a>吧</p>
-        <img alt="Static Badge" src="https://img.shields.io/badge/Only_Optimized-%2300AF5C?logo=modrinth&label=Modrinth">
-    </div>
-    
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-        <a href="#">Link 4</a>
-    </div>
+<div class="layui-header header header-extends" style="background-color: #24262F;">
+    <div class="layui-container">
+        <a class="logo" href="https://www.yuanxu.top/">yuanxu.top</a>
+        <div class="layui-form component" lay-filter="LAY-site-header-component">
+        </div>
 
-    <script src="js/sidebar.js"></script>
+    </div>
+</div>
+<!--[if lt IE 9]>
+<script src="static/js/html5.min.js"></script>
+<script src="static/js/respond.min.js"></script>
+<![endif]-->
+<div class="fly-extend-banner" style="background-image: url('./dist/bg.png');">
+    <h1 class="fly-extend-banner-title">个人信息介绍<!--<br>V1.0公测版--></h1>
+</div>
+
+<ul class="site-idea">
+    <li>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>关于个人</legend>
+            <p></p>
+            <center>
+                一个热爱玩MC的人，一个深思却不熟虑的人
+            </center>
+            <p></p>
+        </fieldset>
+    </li>
+    <li>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>个人见解</legend>
+            <p></p>
+            <center>我觉得：不管学习什么东西，我得先把它记住，毕竟我记性差</center>
+            <p></p>
+        </fieldset>
+    </li>
+    <li>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>谨言</legend>
+            <p></p>
+            <center> 人就得学会感恩，滴水之恩应当涌泉相报。感谢那些曾经帮助过我的人，因为有你们我才会变得如此的优秀。</center>
+            <p></p>
+        </fieldset>
+    </li>
+</ul>
+
+</div>
+<script type="text/javascript" src="./dist/jquery-1.11.3.min.js"></script>
+<script src="./dist/layui.js"></script>
 </body>
-<footer>
-    <h2 class="power">powered by <a href="https://github.com/dslzl">myself</a></h2>
-    <h2>contact with me: <a href="mailto:q2891362919@163.com">q2891362919@163.com</a></h2>
-</footer>
 </html>
